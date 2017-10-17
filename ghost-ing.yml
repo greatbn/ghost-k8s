@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: blog-ingress
+  namespace: sapd
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/tls-acme: 'true'
+spec:
+  rules:
+  - host: blog.sapham.net
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: blog-sapham
+          servicePort: 80
+  tls:
+  - secretName: blog-ingress
+    hosts:
+    - blog.sapham.net

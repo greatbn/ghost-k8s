@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  blog-sapham
+  namespace: sapd
+spec:
+  selector:
+    name: blog-sapham
+  type:  ClusterIP
+  ports:
+  - name:  ghost-port
+    port:  80
+    targetPort:  2368
